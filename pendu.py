@@ -50,7 +50,7 @@ def dessinPendu(nb):
 	   |
 	==============
 	""",
-	
+
 	"""
 	   +-------+
 	   |	   |
@@ -71,4 +71,4 @@ def dessinPendu(nb):
 	==============
 	"""
 	]
-	print("c'est lucien")
+	print("coucou")
