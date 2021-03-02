@@ -1,4 +1,5 @@
-#
+#j'ai aussi avancé ma fonction
+print("coucou")
 #
 #
 #
