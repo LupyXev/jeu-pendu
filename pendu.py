@@ -1,3 +1,9 @@
+#
+#
+#
+#
+
+
 def dessinPendu(nb):
 	tab = [
 
