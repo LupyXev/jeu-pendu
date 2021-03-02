@@ -1,8 +1,8 @@
-#j'ai aussi avancé ma fonction
-print("coucou")
 #
 #
 #
+#
+j'ai avancé ma fonction
 
 
 def dessinPendu(nb):
