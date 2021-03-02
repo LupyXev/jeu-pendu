@@ -2,7 +2,7 @@
 #
 #
 #
-j'ai avancé ma fonction
+j'ai encore avancé ma fonction
 
 
 def dessinPendu(nb):
