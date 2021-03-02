@@ -71,3 +71,4 @@ def dessinPendu(nb):
 	==============
 	"""
 	]
+	print("c'est lucien")
