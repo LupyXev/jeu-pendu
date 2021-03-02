@@ -1,8 +1,9 @@
 #
+#print("ceci est un test")
+AHAHAH
 #
 #
-#
-j'ai encore avancé ma fonction
+j'ai avancé ma fonction
 
 
 def dessinPendu(nb):
