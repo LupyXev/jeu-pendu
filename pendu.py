@@ -2,6 +2,10 @@
 #
 #
 #
+import os 
+from random import randint
+
+arborescence = "U:/nicolas.marcel/Mes documents/1ere/NSI/2021-03-02/dico.txt"
 
 
 def dessinPendu(nb):
@@ -81,7 +85,11 @@ def dessinPendu(nb):
 	
 
 def recupererMotAuHasard(): #Fonction pour choisir un mot au hasard à faire deviner
-	return "bonjour"
+	with open(arborescence,'r') as f:
+		texte = f.read()
+		texte = texte.split("\n")
+		indexMot = randint(0,len(texte)-1)
+		return texte[indexMot]
 
 
 def main():
@@ -97,13 +105,22 @@ def main():
 	else:
 		motADeviner = recupererMotAuHasard()
 
+	motADeviner = motADeviner.upper()
+
 	#boucle principale
 	trouve = False
 	perdu = False
 	etatPendu = 0
 	listeLettresTrouvees = [None]*len(motADeviner)
+	listeLettresDonnees = [] #Liste de toutes les lettres dejà proposées par l'utilisateur
+
 	while trouve == False and perdu == False:
-		lettreActu = input("Entrez une lettre : ")
+
+		lettreActu = None
+		while lettreActu in listeLettresDonnees or lettreActu == None:
+			lettreActu = input("Entrez une lettre : ").upper()
+
+		listeLettresDonnees.append(lettreActu)
 
 		reponseJuste = False
 		for index in range(len(motADeviner)):
@@ -139,3 +156,4 @@ def main():
 		print(f"Dommage vous avez perdu, le mot était {motADeviner}")
 
 
+main()
