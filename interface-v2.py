@@ -154,8 +154,9 @@ def jeu_solo():
         boutonValider.wait_variable(valide)
         mot = mot.get().upper() #on met la valeur du mot dans cette variable
 
-    print(f"mot choisi : {mot}")
+    print("mot choisi")
     clear_window(fenetre, [textCredits])
+    #on a fini de choisir le mot
 
 arborescence = "dico.txt"
 
