@@ -79,22 +79,6 @@ def dessinPendu(nb):
     return tab[nb]
 
 def fenetre_error(titre, message):
-    '''fenetreErreur = Frame(fenetre)
-
-    textErreur = Label(fenetreErreur,text=f'Erreur : {message}')
-    textErreur.grid(row=1)
-
-    boutonClique = IntVar() #var pour savoir si le bouton fermer a été cliqué
-    print(boutonClique.get())
-    boutonFermer = Button(fenetreErreur, text="Fermer", command=lambda: boutonClique.set(1))
-    boutonFermer.grid(row=2)
-
-
-    print(boutonClique.get())
-    boutonFermer.wait_variable(boutonClique)
-    print(boutonClique.get())
-
-    fenetreErreur.mainloop()'''
     fenErreur = messagebox.showwarning(titre, message)
 
 def recuperer_mot_au_hasard():
@@ -171,17 +155,26 @@ def play(motADeviner):
     while trouve == False and perdu == False:
 
         lettreActu = None
+        messagePrincipal = tk.Label(fenetre, text="Entrez une lettre")
+        messagePrincipal.grid(row=0)
+
         while lettreActu in listeLettresDonnees or lettreActu == None: #On vérifie qu'on ne rentre pas 2 fois la même lettre
-            clear_window(fenetre)
-            valide = tk.BooleanVar()
-            boutonValider = tk.Button(fenetre, text="Valider", command=lambda: valide.set(True))
+            clear_window(fenetre, [textCredits, messagePrincipal])
+            valide = tk.BooleanVar() #le booléen si lettre validée
+            boutonValider = tk.Button(fenetre, text="Valider", command=lambda: valide.set(True)) #le bouton de validation
             boutonValider.grid(row=5)
-            lettreActuEntry = tk.StringVar()
-            valide = tk.BooleanVar()
-            entree=tk.Entry(fenetre, textvariable=lettreActuEntry, width=30)
+            lettreActuEntry = tk.StringVar() #l'objet contenant la lettre renseignée
+
+            entree=tk.Entry(fenetre, textvariable=lettreActuEntry, width=10)
             entree.grid(row=2,column=10)
-            boutonValider.wait_variable(valide) #attend la validation des données
+            while len(lettreActuEntry.get()) != 1: #tant que le texte n'est pas un caractère
+                boutonValider.wait_variable(valide)  # attend la validation des données
+                if len(lettreActuEntry.get()) != 1:
+                    fenetre_error("Erreur de donnée", "Le texte renseigné n'est pas un caractère unique")
+
             lettreActu = lettreActuEntry.get().upper()
+            if lettreActu in listeLettresDonnees: #si la lettre est déjà essayée
+                fenetreLettreDejaRentree = messagebox.showinfo("Lettre déjà renseignée", "La lettre que vous avez entrée a déjà été essayée")
 
 
         listeLettresDonnees.append(lettreActu)
@@ -215,13 +208,25 @@ def play(motADeviner):
         elif None not in listeLettresTrouvees:
             trouve = True
 
+    clear_window(fenetre, [textCredits])
+    messageAAfficher = None
 
+    if perdu:
+        messageAAfficher = "Dommage, vous avez perdu, le mot à deviner était " + motADeviner + "."
+    elif trouve:
+        messageAAfficher = "Bravo vous avez réussi à trouver le mot " + motADeviner + " ! Nous vous félicitons !"
+    else:
+        fenetre_error("Erreur", "Le joueur n'a ni gagné ni perdu")
+
+    messagePrincipal = tk.Label(fenetre, text=messageAAfficher)
+    messagePrincipal.grid(row=0)
 
 arborescence = "dico.txt"
 
 
 fenetre=tk.Tk() #Utilise la classe Tk() pour créer une fenêtre
 fenetre.geometry("640x480")
+fenetre.title("Le jeu du pendu")
 
 
 textBienvenue = tk.Label(fenetre,text='Bienvenue sur notre jeu du pendu !')
