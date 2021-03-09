@@ -2,6 +2,20 @@
 import os
 
 
+#--------FONCTIONNEMENT DU PROGRAMME : -------
+#-On demande à l'utilisateur le nombre de lettres du mot
+#-Avec le dictionnnaire de mots français, on fait une liste de tous les mots qui ont ce nombre de lettres
+#-On entre dans la boucle principale :
+#    -On regarde la lettre la plus présente qu'on a pas demandée dans les mots possibles et on la propose à l'utilisateur
+#    -Si elle n'est pas dans le mot : on enlève de la liste tous les mots qui ont cette lettre
+#    -Si elle est dans le mot :
+#        -On garde dans la liste que les mots qui ont cette lette à/aux endroit(s) précisé(s)
+#    -On vérifie si on a gagné ou perdu, et si ce n'est pas le cas on reboucle
+#
+#
+
+
+
 #---------- DEFINITIONS VARIABLES ------------
 print("Entrer 0 si la lettre proposée n'est pas dans le mot.")
 print("Sinon entrer la position de la lettre dans le mot")
