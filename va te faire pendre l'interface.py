@@ -10,81 +10,81 @@ import time
 
 
 def dessinPendu(nb):
-	tab = [
+    tab = [
 
-	"""
-	   +-------+
-	   |
-	   |
-	   |
-	   |
-	   |
-	==============
-	""",
+    """
+       +-------+
+       |
+       |
+       |
+       |
+       |
+    ==============
+    """,
 
-	"""
-	   +-------+
-	   |	   |
-	   |	   O
-	   |
-	   |
-	   |
-	==============
-	""",
+    """
+       +-------+
+       |	   |
+       |	   O
+       |
+       |
+       |
+    ==============
+    """,
 
-	"""
-	   +-------+
-	   |	   |
-	   |	   O
-	   |	   |
-	   |
-	   |
-	==============
-	""",
+    """
+       +-------+
+       |	   |
+       |	   O
+       |	   |
+       |
+       |
+    ==============
+    """,
 
-	"""
-	   +-------+
-	   |	   |
-	   |	   O
-	   |	  -|
-	   |
-	   |
-	==============
-	""",
+    """
+       +-------+
+       |	   |
+       |	   O
+       |	  -|
+       |
+       |
+    ==============
+    """,
 
-	"""
-	   +-------+
-	   |	   |
-	   |	   O
-	   |	  -|-
-	   |
-	   |
-	==============
-	""",
+    """
+       +-------+
+       |	   |
+       |	   O
+       |	  -|-
+       |
+       |
+    ==============
+    """,
 
-	"""
-	   +-------+
-	   |	   |
-	   |	   O
-	   |	  -|-
-	   |	  |
-	   |
-	==============
-	""",
+    """
+       +-------+
+       |	   |
+       |	   O
+       |	  -|-
+       |	  |
+       |
+    ==============
+    """,
 
-	"""
-	   +-------+
-	   |	   |
-	   |	   O
-	   |	  -|-
-	   |	  | |
-	   |
-	==============
-	"""
-	]
-	return tab[nb]
-	
-	
+    """
+       +-------+
+       |	   |
+       |	   O
+       |	  -|-
+       |	  | |
+       |
+    ==============
+    """
+    ]
+    return tab[nb]
+
+
 
 arborescence = "U:/nicolas.marcel/Mes documents/1ere/NSI/2021-03-02/dico.txt"
 
@@ -154,54 +154,54 @@ def main(motADeviner):
     print(motADeviner)
     print("boucle principale")
     #boucle principale
-	trouve = False
-	perdu = False
-	etatPendu = 0
-	listeLettresTrouvees = [None]*len(motADeviner)
-	listeLettresDonnees = [] #Liste de toutes les lettres dejà proposées par l'utilisateur
+    trouve = False
+    perdu = False
+    etatPendu = 0
+    listeLettresTrouvees = [None]*len(motADeviner)
+    listeLettresDonnees = [] #Liste de toutes les lettres dejà proposées par l'utilisateur
     while trouve == False and perdu == False:
 
-		lettreActu = None
-		while lettreActu in listeLettresDonnees or lettreActu == None:
-		    
-		    
-			lettreActu = input("Entrez une lettre : ").upper()
-			
-
-		listeLettresDonnees.append(lettreActu)
-
-		reponseJuste = False
-		for index in range(len(motADeviner)):
-			if motADeviner[index] == lettreActu:
-				listeLettresTrouvees[index] = lettreActu
-				reponseJuste = True
-
-		if reponseJuste:
-			print("Cette lettre appartient au mot")
-		else:
-			etatPendu += 1
-			print("Cette lettre est incorrecte")
-
-		print(dessinPendu(etatPendu))
+        lettreActu = None
+        while lettreActu in listeLettresDonnees or lettreActu == None:
 
 
-		for lettre in listeLettresTrouvees:
-			if lettre == None:
-				print("-", end="")
-			else:
-				print(lettre, end="")
-		print("")
+            lettreActu = input("Entrez une lettre : ").upper()
 
-		#si perdu
-		if etatPendu >= 6:
-			perdu = True
-		elif None not in listeLettresTrouvees:
-			trouve = True
 
-	if trouve:
-		print("Bravo vous avez gagné !")
-	else:
-		print(f"Dommage vous avez perdu, le mot était {motADeviner}")
+        listeLettresDonnees.append(lettreActu)
+
+        reponseJuste = False
+        for index in range(len(motADeviner)):
+            if motADeviner[index] == lettreActu:
+                listeLettresTrouvees[index] = lettreActu
+                reponseJuste = True
+
+        if reponseJuste:
+            print("Cette lettre appartient au mot")
+        else:
+            etatPendu += 1
+            print("Cette lettre est incorrecte")
+
+        print(dessinPendu(etatPendu))
+
+
+        for lettre in listeLettresTrouvees:
+            if lettre == None:
+                print("-", end="")
+            else:
+                print(lettre, end="")
+        print("")
+
+        #si perdu
+        if etatPendu >= 6:
+            perdu = True
+        elif None not in listeLettresTrouvees:
+            trouve = True
+
+    if trouve:
+        print("Bravo vous avez gagné !")
+    else:
+        print(f"Dommage vous avez perdu, le mot était {motADeviner}")
     
     
 
