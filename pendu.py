@@ -5,7 +5,7 @@
 import os 
 from random import randint
 
-arborescence = "U:/nicolas.marcel/Mes documents/1ere/NSI/2021-03-02/dico.txt"
+arborescence = "dico.txt"
 
 
 def dessinPendu(nb):

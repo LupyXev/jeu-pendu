@@ -86,7 +86,7 @@ def dessinPendu(nb):
 
 
 
-arborescence = "U:/nicolas.marcel/Mes documents/1ere/NSI/2021-03-02/dico.txt"
+arborescence = "dico.txt"
 
 def clear_window(fenetre):
     for widget in fenetre.winfo_children():
