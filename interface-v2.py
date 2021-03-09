@@ -97,7 +97,12 @@ def fenetre_error(titre, message):
     fenetreErreur.mainloop()'''
     fenErreur = messagebox.showwarning(titre, message)
 
-
+def recuperer_mot_au_hasard():
+    with open(arborescence, 'r') as f:
+        texte = f.read()
+        texte = texte.split("\n")
+        indexMot = randint(0, len(texte) - 1)
+        return texte[indexMot]
 
 def clear_window(fenetre, listeAGarder=[]):
     for widget in fenetre.winfo_children():
@@ -126,9 +131,33 @@ def jeu_solo():
         if modeDeMot.get() != 1 and modeDeMot.get() != 2:
             fenetre_error("Erreur d'entrée de donnée", "Votre choix n'est pas correctement validé")
 
-    print(modeDeMot.get())
-    print("choix défini")
+    print("choix de type de mot défini")
 
+    mot = None
+    if modeDeMot.get() == 1: #si le mot est choisi au hasard
+        mot = recuperer_mot_au_hasard().upper()
+    else: #si le mot est choisi par l'utilisateur
+        clear_window(fenetre, [textCredits])
+        messagePrincipal = tk.Label(fenetre, text="Entrez un mot")
+        messagePrincipal.grid(row=0)
+
+        mot = tk.StringVar() #variable qui contiendra le mot
+        mot.set(value="MOT")
+        valide = tk.BooleanVar()
+
+        champDeTexte = tk.Entry(fenetre, textvariable=mot, width=40)
+        champDeTexte.grid(row=1)
+
+        boutonValider = tk.Button(fenetre, text="Valider", command=lambda: valide.set(True))
+        boutonValider.grid(row=2)
+
+        boutonValider.wait_variable(valide)
+        mot = mot.get().upper() #on met la valeur du mot dans cette variable
+
+    print(f"mot choisi : {mot}")
+    clear_window(fenetre, [textCredits])
+
+arborescence = "dico.txt"
 
 
 fenetre=tk.Tk() #Utilise la classe Tk() pour créer une fenêtre
