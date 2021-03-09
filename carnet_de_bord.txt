@@ -1,0 +1,12 @@
+Mardi 02/03 :
+-Analyse du sujet (les attentes)
+-Organisation avec Github
+-Fait le projet sans interface graphique
+
+Jeudi 04/03 :
+-Essai avec l'interface graphique (pas trop bien marché donc plus ou moins abandonné)
+
+Mardi 09/03 :
+-Trouvé la solution pour l'interface graphique
+-Pendu avec ordinateur qui devine
+-Ajouté plus de commentaires au code
