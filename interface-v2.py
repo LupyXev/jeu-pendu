@@ -111,6 +111,7 @@ def jeu_solo():
 
     modeDeMot = tk.IntVar()
     valide = tk.BooleanVar() #pour savoir si le choix a été validé
+    messagePrincipal = tk.Label(fenetre, texte="Comment souhaitez-vous obtenir le mot ?")
     radioButtonMotAleatoire = tk.Radiobutton(fenetre, text="Mot aléatoire", variable=modeDeMot, value=1)
     radioButtonMotChoisi = tk.Radiobutton(fenetre, text="Mot choisi   ", variable=modeDeMot, value=2)
     boutonValider = tk.Button(fenetre, text="Valider", command=lambda: valide.set(True))
