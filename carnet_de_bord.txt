@@ -11,3 +11,7 @@ Mardi 09/03 :
 -Pendu avec ordinateur qui devine
 -Ajouté plus de commentaires au code
 -Fait les images des états du pendu
+
+Jeudi 11/03 :
+-Fin de l'interface graphique
+-Préparation de l'oral
