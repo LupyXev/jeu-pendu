@@ -154,19 +154,46 @@ def play(motADeviner):
 
     while trouve == False and perdu == False:
 
+        # Affichage du mot dans la console avec des "_" pour les trous
+
+        motAAfficher = ""  # Mot à faire deviner qu'on affiche dans la fenetre
+
+        for lettre in listeLettresTrouvees:
+
+            if lettre == None:
+
+                motAAfficher += "_"
+
+            else:
+
+                motAAfficher += lettre
+
+            motAAfficher += " "
+
+        messageMot = tk.Label(fenetre, text=motAAfficher)
+
+        messageMot.grid(row=1)
+
         lettreActu = None
         messagePrincipal = tk.Label(fenetre, text="Entrez une lettre")
-        messagePrincipal.grid(row=0)
+        messagePrincipal.grid(row=2)
+
 
         while lettreActu in listeLettresDonnees or lettreActu == None: #On vérifie qu'on ne rentre pas 2 fois la même lettre
-            clear_window(fenetre, [textCredits, messagePrincipal])
+            clear_window(fenetre, [textCredits, messagePrincipal, messageMot])
+            canvas = tk.Canvas(fenetre, width=640, height=380)
+            img = tk.PhotoImage(file=f'images/{etatPendu}.png')
+            canvas.create_image(0, 0, image=img, anchor="nw")
+
+            canvas.grid(row=0)
+
             valide = tk.BooleanVar() #le booléen si lettre validée
             boutonValider = tk.Button(fenetre, text="Valider", command=lambda: valide.set(True)) #le bouton de validation
             boutonValider.grid(row=5)
             lettreActuEntry = tk.StringVar() #l'objet contenant la lettre renseignée
 
             entree=tk.Entry(fenetre, textvariable=lettreActuEntry, width=10)
-            entree.grid(row=2,column=10)
+            entree.grid(row=3)
             while len(lettreActuEntry.get()) != 1: #tant que le texte n'est pas un caractère
                 boutonValider.wait_variable(valide)  # attend la validation des données
                 if len(lettreActuEntry.get()) != 1:
@@ -218,8 +245,14 @@ def play(motADeviner):
     else:
         fenetre_error("Erreur", "Le joueur n'a ni gagné ni perdu")
 
+    canvas = tk.Canvas(fenetre, width=640, height=400)
+    img = tk.PhotoImage(file=f'images/{etatPendu}.png')
+    canvas.create_image(0, 0, image=img, anchor="nw")
+
+    canvas.grid(row=0)
+
     messagePrincipal = tk.Label(fenetre, text=messageAAfficher)
-    messagePrincipal.grid(row=0)
+    messagePrincipal.grid(row=2)
 
 arborescence = "dico.txt"
 
