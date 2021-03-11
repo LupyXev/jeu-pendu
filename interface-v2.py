@@ -245,12 +245,6 @@ def play(motADeviner):
     else:
         fenetre_error("Erreur", "Le joueur n'a ni gagné ni perdu")
 
-    canvas = tk.Canvas(fenetre, width=640, height=400)
-    img = tk.PhotoImage(file=f'images/{etatPendu}.png')
-    canvas.create_image(0, 0, image=img, anchor="nw")
-
-    canvas.grid(row=0)
-
     messagePrincipal = tk.Label(fenetre, text=messageAAfficher)
     messagePrincipal.grid(row=2)
 
