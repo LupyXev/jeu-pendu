@@ -10,3 +10,4 @@ Mardi 09/03 :
 -Trouvé la solution pour l'interface graphique
 -Pendu avec ordinateur qui devine
 -Ajouté plus de commentaires au code
+-Fait les images des états du pendu
